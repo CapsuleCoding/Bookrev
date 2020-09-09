@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
     #Render login form
-    get "/login" do
+    get "/login" do    #when we send a get request to this route, it renders our login erb file
         erb :login #renders our login form
     end
 
@@ -17,7 +17,8 @@ class UsersController < ApplicationController
          user = User.find_by(email: params[:email])  #find the user
          #authenicate user then next step
          if user && user.authenticate(params[:password])#authenicate our use.take password and 
-          #log them in
+          #user&&user authenticate is from has_secure_password macro
+            #log them in
           #create a key value pair in the session hash using the user_id to actually log in
           session[:user_id] = user.id
           #binding.pry
