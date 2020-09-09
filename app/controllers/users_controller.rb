@@ -13,6 +13,23 @@ class UsersController < ApplicationController
 
     post "/login" do #receives data from login form(params)
         #binding.pry, then shotgun /login then enter email in webpage then run params in terminal
-        # params key comes from login.erb password and email name
-    end
+         # params key comes from login.erb password and email name
+         user = User.find_by(email: params[:email])  #find the user
+         #authenicate user then next step
+         if user && user.authenticate(params[:password])#authenicate our use.take password and 
+          #log them in
+          #create a key value pair in the session hash using the user_id to actually log in
+          session[:user_id] = user.id
+          #binding.pry
+            redirect "/users/#{user.id}"
+         else 
+            redirect '/login'
+            #binding.pry
+         end
+        end
+
+        #users show route
+        get "/users/:id" do
+            "Thank You for signing in !"
+        end
 end
