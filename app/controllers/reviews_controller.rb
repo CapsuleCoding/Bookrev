@@ -56,3 +56,15 @@ class ReviewsController < ApplicationController
         redirect '/reviews'
     end
 
+private
+
+    def set_review
+      @review = Review.find_by_id(params[:id])
+        if @review.nil?
+         flash[:error] = "Couldn't find a Post with id: #{params[:id]}"
+         redirect "/reviews"
+        end
+    end
+
+
+end
