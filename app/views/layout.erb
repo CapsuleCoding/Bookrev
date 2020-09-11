@@ -14,7 +14,25 @@
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   <body>
+
     <div class="wrapper">
+
+    <% if flash[:error] %>
+    <h3 style="color:red;"><%= flash[:error] %></h3>
+    <% end %>
+
+    <% if flash[:message] %>
+    <h3 style="color:green;"><%= flash[:message] %></h3>
+    <% end %>
+
+
+      <div class="nav">
+        <% if logged_in? %>
+          <a href="/reviews">All Posts</a>
+          <a href="/reviews/new">Create a Book Review</a>
+          <a href="/logout">Log Out</a>
+        <% end %>
+      </div>
 
         <%= yield %>
 

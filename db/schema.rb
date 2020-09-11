@@ -13,10 +13,11 @@
 
 ActiveRecord::Schema.define(version: 20200908055133) do
 
-  create_table "posts", force: :cascade do |t|
+  create_table "reviews", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.integer  "user_id"
+    t.string   "image_url"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -24,8 +25,10 @@ ActiveRecord::Schema.define(version: 20200908055133) do
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "username"
+    t.string   "bio"
     t.string   "email"
     t.string   "password_digest"
+    t.string   "image_url"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
